@@ -1,0 +1,21 @@
+Entity_Name,Entity_Type,Example_Values,Synonyms,Used_In_Intent
+@food-item,Custom,"Pizza, Burger, Pasta, Chicken Wings, Salad, Sandwich","Pizza: pie, italian bread | Burger: sandwich, patty","Order Food, Add Item, Remove Item, Modify Order"
+@food-category,Custom,"Main Course, Appetizer, Dessert, Beverages, Starters","Main: entree, primary | Appetizer: starter, snack","Show Menu, Order Food, Recommendations"
+@quantity,System (@sys.number),"1, 2, 3, one, two, three, couple, few","One: 1, single | Two: 2, pair, couple","Add Item, Modify Order, Order Total"
+@size,Custom,"Small, Medium, Large, Extra Large, Personal, Family","Small: S, mini | Large: L, big, jumbo","Add Item, Modify Order"
+@pizza-toppings,Custom,"Pepperoni, Mushrooms, Cheese, Olives, Tomatoes, Onions","Pepperoni: salami | Cheese: mozzarella, cheddar",Add Item (Pizza specific)
+@drink-types,Custom,"Coke, Pepsi, Water, Juice, Coffee, Tea, Beer","Coke: Coca Cola, Cola | Water: H2O, mineral water",Add Item (Beverage specific)
+@delivery-type,Custom,"Delivery, Takeaway, Pickup, Dine-in","Delivery: home delivery, door delivery","Delivery Selection, Takeaway Selection"
+@payment-method,Custom,"Cash, Card, Online Payment, UPI, PayPal, Cash on Delivery","Card: credit card, debit card | Cash: money, bills",Payment Information
+@dietary-restrictions,Custom,"Vegetarian, Vegan, Gluten-free, Dairy-free, Nut-free","Vegetarian: veg, veggie | Vegan: plant-based","Dietary Restrictions, Show Menu"
+@spice-level,Custom,"Mild, Medium, Spicy, Extra Hot, No Spice","Mild: less spicy, light | Spicy: hot, chili","Special Instructions, Add Item"
+@cooking-preference,Custom,"Well Done, Medium, Rare, Crispy, Soft",Well Done: fully cooked | Crispy: crunchy,"Special Instructions, Add Item"
+@time-preference,System (@sys.date-time),"ASAP, 30 minutes, 1 hour, specific time","ASAP: as soon as possible, quick, fast","Delivery Time Estimate, Special Instructions"
+@order-status,Custom,"Preparing, Out for Delivery, Delivered, Cancelled","Preparing: cooking, being made | Delivered: completed",Order Status Inquiry
+@feedback-type,Custom,"Complaint, Compliment, Suggestion, Rating","Complaint: issue, problem | Compliment: praise",Complaint or Feedback
+@modification-type,Custom,"Add, Remove, Change Quantity, Change Size","Add: include, put | Remove: delete, take out",Modify Order
+@customer-name,System (@sys.person),"John, Mary, David, Sarah",Names can have variations in spelling,Customer Details Collection
+@phone-number,System (@sys.phone-number),"+1234567890, 123-456-7890",Various phone number formats supported,Customer Details Collection
+@address-components,System (@sys.location),"Street, City, State, Postal Code, Landmark",Address parts with local variations,Address Collection
+@restaurant-hours,Custom,"Open, Closed, 9 AM to 11 PM",Time format variations,Restaurant Hours
+@order-urgency,Custom,"Urgent, Standard, No Rush",Priority levels for orders,"Special Instructions, Order Food"

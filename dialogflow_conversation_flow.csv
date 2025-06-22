@@ -1,0 +1,15 @@
+Flow_Step,Associated_Intent,Input_Context,Output_Context,Required_Entities,Possible_Follow_ups,Sample_Response
+Initial Greeting,Default Welcome Intent,None,welcome-followup,None,"Show Menu, Order Food, Restaurant Hours",Welcome! I can help you order delicious food. Would you like to see our menu?
+Menu Display,Show Menu,welcome-followup,menu-followup,@food-category (optional),"Order Food, Dietary Restrictions, Recommendations",Here's our menu: [Categories]. What would you like to order?
+Order Initiation,Order Food,menu-followup,order-followup,None,"Add Item, Show Menu",Great! Let's start your order. What food item would you like?
+Item Selection,Add Item to Cart,order-followup,item-selected-followup,"@food-item, @quantity","Add Item, Modify Order, Remove Item",Added [item] to your cart. Anything else?
+Quantity & Size Selection,Modify Order,item-selected-followup,order-building-followup,"@size, @pizza-toppings (conditional)","Add Item, Special Instructions, Delivery Selection",What size would you like? Any special toppings?
+Special Instructions,Special Instructions,order-building-followup,order-complete-followup,"@spice-level, @cooking-preference","Delivery Selection, Add Item",Any special cooking instructions or spice preferences?
+Delivery Type Selection,Delivery/Takeaway Selection,order-complete-followup,delivery-selected-followup,@delivery-type,"Address Collection, Customer Details",Would you like delivery or takeaway?
+Address Collection (if delivery),Address Collection,delivery-selected-followup,address-collected-followup,@address-components (if delivery),"Customer Details, Order Review",Please provide your delivery address.
+Customer Details,Customer Details Collection,address-collected-followup,details-collected-followup,"@customer-name, @phone-number","Order Review, Modify Order",Please provide your name and phone number.
+Order Review,Order Confirmation,details-collected-followup,review-complete-followup,None,"Payment Information, Modify Order",Here's your order summary: [items]. Confirm to proceed.
+Payment Method,Payment Information,review-complete-followup,payment-collected-followup,@payment-method,"Order Confirmation, Modify Order",How would you like to pay?
+Final Confirmation,Order Confirmation,payment-collected-followup,order-confirmed-followup,None,"Order Tracking, Goodbye",Order confirmed! Your order ID is #12345.
+Order Tracking Setup,Order Status Setup,order-confirmed-followup,tracking-setup-followup,None,"Order Status Inquiry, Goodbye",You can track your order with ID #12345.
+Farewell,Goodbye,tracking-setup-followup,conversation-end,None,New Order (restart flow),Thank you for ordering with us!

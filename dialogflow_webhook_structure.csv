@@ -1,0 +1,16 @@
+Intent_Action,HTTP_Method,Required_Parameters,Database_Tables,Response_Format,Error_Handling
+show.menu,POST,food_category (optional),"menu_items, food_categories",Menu categories and items list,Menu not available message
+add.item.to.cart,POST,"food_item, quantity, size (optional)","cart_items, menu_items",Cart update confirmation,Item not found or out of stock
+remove.item.from.cart,POST,food_item,cart_items,Item removal confirmation,Item not in cart error
+modify.order,POST,"food_item, modification_type, new_value",cart_items,Modification confirmation,Invalid modification error
+collect.customer.details,POST,"customer_name, phone_number",customers,Customer details saved confirmation,Missing required fields error
+collect.address,POST,"street, city, postal_code",addresses,Address validation and save confirmation,Invalid address format error
+confirm.order,POST,"order_items, customer_details, delivery_info","orders, order_items",Order ID and estimated time,Order creation failed error
+track.order,GET,order_id,orders,Order status and location,Order not found error
+cancel.order,POST,order_id,orders,Cancellation confirmation,Cannot cancel order error
+payment.processing,POST,"payment_method, amount","payments, orders",Payment status,Payment processing error
+get.recommendations,GET,"food_category (optional), dietary_restrictions (optional)",menu_items,Recommended items list,No recommendations available
+check.dietary.restrictions,GET,dietary_restriction_type,menu_items,Filtered menu items,No items match criteria
+calculate.total,GET,order_items,"cart_items, menu_items",Total amount,Cart empty error
+estimate.delivery.time,GET,"delivery_address, order_time",delivery_zones,Estimated delivery time,Delivery not available in area
+process.feedback,POST,"feedback_type, message, rating (optional)",feedback,Feedback acknowledgment,Feedback submission failed

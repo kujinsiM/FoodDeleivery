@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TastyBites Express - Delicious Food Delivered Fast</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__logo">
+                    <h2>🍕 TastyBites Express</h2>
+                </div>
+                <nav class="header__nav">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#menu" class="nav-link">Menu</a>
+                    <a href="#about" class="nav-link">About Us</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+                <div class="header__search">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search food items..." class="form-control">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="header__actions">
+                    <div class="delivery-info">
+                        <span class="phone">📞 +1 (555) 123-FOOD</span>
+                        <span class="delivery-time">🚚 30-45 mins</span>
+                    </div>
+                    <button class="btn btn--outline btn--sm login-btn">Login</button>
+                    <button class="cart-btn" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero__content">
+                    <h1>Order Your Favorite Food Online</h1>
+                    <p>Delicious meals delivered fresh to your doorstep in 30-45 minutes</p>
+                    <div class="hero__actions">
+                        <button class="btn btn--primary btn--lg" onclick="showMenu()">Order Now</button>
+                        <button class="btn btn--outline btn--lg" onclick="showMenu()">View Menu</button>
+                    </div>
+                    <div class="delivery-options">
+                        <div class="option">
+                            <i class="fas fa-truck"></i>
+                            <span>Free Delivery on orders over $25</span>
+                        </div>
+                        <div class="option">
+                            <i class="fas fa-store"></i>
+                            <span>Pickup Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories">
+            <div class="container">
+                <h2>Popular Categories</h2>
+                <div class="categories__grid" id="categoriesGrid">
+                    <!-- Categories will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Items -->
+        <section class="featured">
+            <div class="container">
+                <h2>Featured Items</h2>
+                <div class="featured__grid" id="featuredGrid">
+                    <!-- Featured items will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <div class="container">
+                <h2>How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step__icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>1. Browse</h3>
+                        <p>Explore our delicious menu and find your favorite dishes</p>
+                    </div>
+                    <div class="step">
+                        <div class="step__icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>2. Order</h3>
+                        <p>Add items to cart and proceed to secure checkout</p>
+                    </div>
+                    <div class="step">
+                        <div class="step__icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>3. Enjoy</h3>
+                        <p>Sit back and enjoy your freshly prepared meal</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="menu hidden">
+            <div class="container">
+                <div class="menu__header">
+                    <h2>Our Menu</h2>
+                    <button class="btn btn--secondary" onclick="showHome()">← Back to Home</button>
+                </div>
+                <div class="menu__filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="Pizza">Pizza</button>
+                    <button class="filter-btn" data-category="Burgers">Burgers</button>
+                    <button class="filter-btn" data-category="Asian">Asian</button>
+                    <button class="filter-btn" data-category="Healthy">Healthy</button>
+                    <button class="filter-btn" data-category="Desserts">Desserts</button>
+                    <button class="filter-btn" data-category="Beverages">Beverages</button>
+                </div>
+                <div class="menu__grid" id="menuGrid">
+                    <!-- Menu items will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <div class="reviews__grid" id="reviewsGrid">
+                    <!-- Reviews will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart__header">
+            <h3>Your Cart</h3>
+            <button class="cart__close" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart__content" id="cartContent">
+            <div class="cart__empty">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+                <button class="btn btn--primary" onclick="showMenu(); toggleCart();">Browse Menu</button>
+            </div>
+        </div>
+        <div class="cart__footer" id="cartFooter" style="display: none;">
+            <div class="cart__totals">
+                <div class="total-line">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0.00</span>
+                </div>
+                <div class="total-line">
+                    <span>Delivery Fee:</span>
+                    <span id="cartDeliveryFee">$2.99</span>
+                </div>
+                <div class="total-line total-line--main">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+            </div>
+            <div class="delivery-type">
+                <label class="radio-label">
+                    <input type="radio" name="orderType" value="delivery" checked>
+                    <span>Delivery</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="orderType" value="pickup">
+                    <span>Pickup</span>
+                </label>
+            </div>
+            <button class="btn btn--primary btn--full-width" onclick="showCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal__content">
+            <div class="modal__header">
+                <h3>Checkout</h3>
+                <button class="modal__close" onclick="closeCheckout()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="checkout-form" id="checkoutForm">
+                <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number *</label>
+                    <input type="tel" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control">
+                </div>
+                <div class="form-group delivery-address">
+                    <label class="form-label">Delivery Address *</label>
+                    <textarea class="form-control" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Payment Method *</label>
+                    <select class="form-control" required>
+                        <option value="">Select payment method</option>
+                        <option value="cash">Cash on Delivery</option>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="digital">Digital Wallet</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Special Instructions</label>
+                    <textarea class="form-control" rows="2" placeholder="Any special requests for your order..."></textarea>
+                </div>
+                <div class="checkout__summary">
+                    <h4>Order Summary</h4>
+                    <div id="checkoutItems"></div>
+                    <div class="checkout__total">
+                        <strong>Total: <span id="checkoutTotal">$0.00</span></strong>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full-width">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot">
+        <button class="chatbot__toggle" onclick="toggleChat()">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chatbot__window" id="chatWindow">
+            <div class="chatbot__header">
+                <h4>TastyBites Assistant</h4>
+                <button onclick="toggleChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot__messages" id="chatMessages">
+                <div class="message bot-message">
+                    <p>Welcome to TastyBites Express! I'm here to help you order delicious food. Would you like to see our menu or do you have any questions?</p>
+                </div>
+            </div>
+            <div class="chatbot__input">
+                <input type="text" id="chatInput" placeholder="Type your message..." class="form-control">
+                <button onclick="sendMessage()" class="btn btn--primary">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h4>TastyBites Express</h4>
+                    <p>Delicious food delivered fast to your doorstep</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer__section">
+                    <h4>Contact Info</h4>
+                    <p>📞 +1 (555) 123-FOOD</p>
+                    <p>✉️ orders@tastybites.com</p>
+                    <p>🕒 Daily: 10:00 AM - 11:00 PM</p>
+                </div>
+                <div class="footer__section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for special offers</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email" class="form-control">
+                        <button class="btn btn--primary">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 TastyBites Express. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
